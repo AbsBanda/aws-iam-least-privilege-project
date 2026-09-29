@@ -53,11 +53,11 @@ The implementation and testing process is documented below with screenshots.
 ### Step 1 - Create the Development S3 Bucket
 
 A dedicated S3 bucket was created for development activities.
-
+![AWS S3 Development Bucket](alice.png)
 ### Step 2 - Create a Custom IAM Policy
 
 A custom IAM policy was created to provide only the S3 permissions required by the developer.
-
+![Alice IAM Permissions](alice%20permissions.png)
 ### Step 3 - Create the FrontendDevelopers Group
 
 An IAM user group named `FrontendDevelopers` was created and the custom policy was attached to the group.
@@ -65,11 +65,11 @@ An IAM user group named `FrontendDevelopers` was created and the custom policy w
 ### Step 4 - Create the Developer User
 
 An IAM user named `alice-dev` was created with AWS Management Console access and added to the `FrontendDevelopers` group.
-
+![Alice IAM User Created](user%20alice%20created.png)
 ### Step 5 - Test Authorized Access
 
 The `alice-dev` user signed in separately and successfully uploaded a test file to the authorized development bucket.
-
+![Alice Authorized S3 Upload](txt%20file%20aploaded.png)
 This confirmed that the required `s3:PutObject` permission was working.
 
 ### Step 6 - Test Unauthorized Access
@@ -77,7 +77,7 @@ This confirmed that the required `s3:PutObject` permission was working.
 The `alice-dev` user attempted to create another S3 bucket.
 
 AWS denied the operation because `s3:CreateBucket` was not included in the custom IAM policy.
-
+![Alice Create Bucket Access Denied](06-alice-create-bucket-access-denied.png.png)
 This confirmed that the Principle of Least Privilege was being enforced.
 
 ## Result
